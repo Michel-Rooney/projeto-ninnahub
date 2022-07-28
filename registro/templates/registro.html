@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'registro/css/registro.css' %}">
+{% endblock %}
+
+{% block 'title' %} Gestão de espaços{% endblock %}
+
+{% block 'body' %}
+    <header class="cabecalho">
+        <img src="{% static 'registro/img/NINNA CINZA.png' %}" class="cabecalho-logo" alt="">
+    </header>
+    <main class="principal">
+        <section class="container">
+            <form class="formulario" action="">
+                
+            <section class="parte-branca">
+                <h2 id="titulo-agente" class="titulo">Dados do Agente</h2>
+                
+                <div class="row-1">
+                    <input type="text" name="nome-agente" placeholder="Nome do agente" id="nome-agente" class="input-padrao" required>
+                    <select id="tipo-empresa" class="input-padrao" required>
+                        <option name="mantenedor">Mantenedor</option>
+                        <option name="residente-startup">Residente Startup</option>
+                        <option name="time-operacional">Time Operacional</option>
+                    </select>
+                </div>
+                <h2 id="titulo-agente" class="titulo">Dados da Empresa</h2>
+                
+                <div class="row-2">
+                    <input type="text" id="nome-empresa" class="input-padrao" name="nome-empresa" placeholder="Nome da empresa" required>
+                    <input type="text" id="nome-evento" class="input-padrao" name="nome-evento" placeholder="Nome do evento" required>
+                </div>
+                
+                <div class="row-3">
+                    <input type="email" name="email" id="email" class="input-padrao" placeholder="Email" required>
+                    <input type="tel" name="telefone" id="telefone" class="input-padrao" placeholder="Telefone" required>
+                </div>
+                
+                <div class="row-4">
+                    <input type="text" placeholder="CPF" class="input-padrao" pattern="/^([0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}|[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2})$/" name="numero-cpf" id="numero-cpf" required>
+                    <input type="text" placeholder="CNPJ" class="input-padrao" pattern="\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}" name="numero-cnpj" id="numero-cnpj" required>
+                </div>
+                
+                <div class="row-5">
+                    <textarea name="descricao-evento" placeholder="Descrição do evento" id="descricao-evento" cols="55" rows="8" required></textarea>
+                </div>
+                
+                <div class="row-6">
+                    <input type="submit" name="botao-confirmar" id="botao-confirmar" value="Confirmar reserva">
+                </div>
+            </form>
+        </section>
+    </section>
+    </main>
+    <footer class="rodape">Gestão de espaço - &copy;Ninna Hub</footer>
+{% endblock %}

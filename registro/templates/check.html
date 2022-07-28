@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+  <link rel="stylesheet" href="{% static 'registro/css/check.css' %}"/>
+
+
+  <script>
+    function Check(x) {
+        var checar = new Date();
+        console.log(checar.getHours() + ':' + checar.getMinutes());
+        document.form.value = checar.getHours();
+
+        if(x == "aparecer") {
+        document.getElementById("sumir").style.display = "block";
+      }
+    }
+  </script>
+{% endblock %}
+
+{% block 'title' %} Check-in {% endblock %}
+
+{% block 'body' %}
+  <main>
+    <div class="parte-branca">
+        <a href="#" onclick="Check()">
+            <div class="botao">
+                <p> Check-in </p>
+            </div>
+            <input type="hidden" value="">
+        </a>
+
+        <a href="#" onclick="Check('aparecer')">
+            <div class="botao">
+                <p> Check-out</p>
+            </div>
+        </a>
+
+      <form action="" name="form" id="sumir">
+        <label for="quantidade" class="label-texto"> *Quantas pessoas utilizaram o ambiente?</label>
+        <input type="text" name="quantidade" id="quantidade"/>
+
+        <input type="submit" value="Enviar" class="botao-form">
+      </form>
+    </div>
+  </main>
+  <script>
+
+  </script>
+{% endblock %}

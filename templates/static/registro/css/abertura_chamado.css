@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url(../img/background.png)center;
+    background-size: 100%;
+}
+
+.topo {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.topo img{
+    width: 20%;
+    margin: 0 auto;
+}
+
+.topo h1 {
+    font-size: 30px;
+    color: #57B952;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ECEDEE;
+    width: 40%;
+    margin: 0 auto;
+    border-radius: 30px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.formulario h1 {
+    color: #57B952;
+    font-size: 40px;
+    border-bottom: 2px #00257A  solid;
+    padding-bottom: 10px;
+}
+
+.div-principal {
+    color: #00257A;
+    margin: 0 auto;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 30px;
+    width: 90%;
+}
+
+.div-principal label {
+    width: 17%;
+    display: flex;
+    text-align: left;
+    font-size: 22px;
+    justify-content: start;
+
+}
+
+.div-principal input {
+    width: 66%;
+    padding: 8px;
+    outline: none;
+}
+
+.div-principal textarea {
+    resize: none;
+    width: 70%;
+    height: 80px;
+}
+
+.botao {
+    display: flex;
+    justify-content: end;
+    padding-right: 17px;
+}
+
+.botao input {
+    width: 30%;
+    height: 50%;
+    padding: 10px;  
+    border-radius: 15px;
+    background: #57B952; 
+}
+
+.botao input:hover {
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'registro/css/abertura_chamado.css' %}">
+{% endblock %}
+
+{% block 'title' %} Abertura de chamado {% endblock %}
+
+{% block 'body' %}
+    <main>
+        <section class="topo">
+            <img src="{% static 'registro/img/NINNA CINZA.png' %}" alt="">
+        </section>
+        <section class="formulario">
+            <h1>Abertura de chamadas</h1>
+                <form>
+                    <div class="div-principal">
+                    <label for="nome"> Nome do Solicitante: </label>
+                    <input type="text" name="fname" id="nome">
+            </div>
+            <div class="div-principal">
+                <label for="data"> Data: </label>
+                <input type="date" name="" id="data"  >
+
+            </div>
+            <div class="div-principal">
+                <label for="ambiente"> Ambiente: </label>
+                <input type="text" name="fname" id="ambiente" maxlength="50" >
+
+            </div>
+            <div class="div-principal">
+                <label for="objeto">Objeto:</label>
+                <input type="text" name="fname" id="objeto" >
+
+            </div>
+            <div class="div-principal">
+                <label for="descricao"> Descrição: </label> 
+                <textarea name="" id="descricao" maxlength="200"></textarea>
+                
+            </div>
+                <div class="botao">
+                    <input type="submit" value="Enviar">
+            </form>
+                </div>
+        </section>
+    </main>
+
+{% endblock %}

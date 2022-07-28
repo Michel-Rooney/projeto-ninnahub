@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+  <link rel="stylesheet" href="{% static 'registro/css/home.css' %}" />
+{% endblock %}
+
+{% block 'title' %} Home {% endblock %}
+
+
+{% block 'body' %}
+  <header>
+    <img src="{% static 'registro/img/NINNA CINZA.png' %}" alt="" />
+    <h1>Gestão de Espaço NINNA HUB</h1>
+  </header>
+  <main>
+    <div class="div-branca">
+      <h4>Espaços Disponíveis</h4>
+      <div class="mae-espacos">
+        <div class="espacos">
+          <a href=""><p>Pregão</p></a>
+          <img src="{% static 'registro/img/pregao.jpeg' %}" alt="" />
+        </div>
+
+        <div class="espacos">
+          <a href=""><p>Auditório</p></a>
+          <img src="{% static 'registro/img/auditorio.JPG' %}" alt="" />
+        </div>
+
+        <div class="espacos">
+          <a href=""><p>Sprint 01</p></a>
+          <img src="{% static 'registro/img/IMG_4858.jpg' %}" alt="" class="img-isolada" />
+        </div>
+
+        <div class="espacos">
+          <a href=""><p>Sprint 02</p></a>
+          <img src="{% static 'registro/img/sprint_02.jpeg' %}" alt="" />
+        </div>
+
+        <div class="espacos">
+          <a href=""><p>Sala Oval</p></a>
+          <img src="{% static 'registro/img/sala-oval.jpeg' %}" alt="" />
+        </div>
+      </div>
+  </div>
+  </main>
+  <footer>
+    <p>&copy; Coryright NINNA HUB 2022</p>
+  </footer>
+
+{% endblock %}
