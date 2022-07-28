@@ -21,8 +21,11 @@
 {% block 'title' %} Check-in {% endblock %}
 
 {% block 'body' %}
+{% for caso in casos %}
   <main>
+   
     <div class="parte-branca">
+      <p>{{caso}}</p>
         <a href="#" onclick="Check()">
             <div class="botao">
                 <p> Check-in </p>
@@ -43,7 +46,9 @@
         <input type="submit" value="Enviar" class="botao-form">
       </form>
     </div>
+ 
   </main>
+{% endfor %}
   <script>
 
   </script>
