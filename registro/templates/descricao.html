@@ -11,20 +11,15 @@
 {% block 'body' %}
   <header>
     <img src="{% static 'registro/img/NINNA CINZA.png' %}" alt="" />
-    <h1>Gestão de Espaço NINNA HUB</h1>
+    <h1>Descrição {{ espaco.nome }}</h1>
   </header>
   <main>
     <div class="div-branca">
-      <h4>Espaços Disponíveis</h4>
       <div class="mae-espacos">
-        {% if espacos %}
-        {% for espaco in espacos %}
-            <div class="espacos">
-                <a href="{% url 'descricao'  espaco.id %}"><p>{{ espaco.nome }}</p></a>
-                <img src="{{ espaco.imagem1.url }}" alt="">
-            </div>
-        {% endfor %}
-        {% endif %}
+        <div class="espacos">
+            <img src="{{ espaco.imagem1.url }}" alt="">
+            <p>{{ espaco.descricao }}</p>
+        </div>
       </div>
   </div>
   </main>
