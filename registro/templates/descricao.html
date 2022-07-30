@@ -11,13 +11,14 @@
 {% block 'body' %}
   <header>
     <img src="{% static 'registro/img/NINNA CINZA.png' %}" alt="" />
-    <h1>Descrição {{ espaco.nome }}</h1>
+    <h1>Descrição do Espaço: {{ espaco.nome }}</h1>
   </header>
   <main>
     <div class="div-branca">
       <div class="mae-espacos">
         <div class="espacos">
             <img src="{{ espaco.imagem1.url }}" alt="">
+            <h2>{{espaco.nome}}</h2>
             <p>{{ espaco.descricao }}</p>
         </div>
       </div>
