@@ -1,5 +1,6 @@
+from datetime import  time,timedelta,datetime 
 from django.shortcuts import get_object_or_404, render, HttpResponse
-from .models import Dados, Espacos
+from .models import Dados, Espacos, Registro
 
 def home(request):
     espaco = Espacos.objects.all()
@@ -21,8 +22,8 @@ def descricao(request, espaco_id):
 
 
 def check(request):
-    conteuto = {"casos": Dados.objects.all()}
-    return render(request, 'check.html',conteuto)
+    conteudo = {"casos": Registro.objects.order_by('check_in_horario').all()}
+    return render(request, 'check.html',conteudo)
 
 def abertura_chamado(request):
     return render(request, 'abertura_chamado.html')
