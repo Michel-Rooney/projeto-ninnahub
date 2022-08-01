@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+  <link rel="stylesheet" href="{% static 'registro/css/home.css' %}" />
+{% endblock %}
+
+{% block 'title' %} Home {% endblock %}
+
+
+{% block 'body' %}
+  <header>
+    <img src="{% static 'registro/img/NINNA CINZA.png' %}" alt="" />
+    <h1>GERENCIAMENTO DE ESPAÇOS</h1>
+  </header>
+  <main>
+    <div class="div-branca">
+      <div class="mae-espacos">
+        <a href="{% url 'adicionar_espaco' %}">Adicionar espaço</a><br><br>
+        <a href="{% url 'remover_espaco' %}">Remover espaço</a><br><br>
+      </div>
+  </div>
+  </main>
+  <footer>
+    <p>&copy; Coryright NINNA HUB 2022</p>
+  </footer>
+
+{% endblock %}
