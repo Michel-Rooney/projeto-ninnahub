@@ -18,8 +18,6 @@ urlpatterns = [
 
     path('gerenciar_espaco/', views.gerenciar_espaco, name='gerenciar_espaco'),
     path('adicionar_espaco/', views.adicionar_espaco, name='adicionar_espaco'),
-
-    
     path('remover_espaco/', views.remover_espaco, name='remover_espaco'),
-    path('remover_espaco/<int:espaco_id>', views.remover_espaco, name='remover_espaco'),
+    path('remover_espaco/<int:espaco_id>', views.remover_espaco_id, name='remover_espaco_id'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
