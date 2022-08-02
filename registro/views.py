@@ -1,5 +1,5 @@
 from datetime import  time,timedelta,datetime 
-from django.shortcuts import get_object_or_404, render, HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render, HttpResponse
 from .models import Dados, Espacos, Registro
 
 def home(request):
@@ -19,6 +19,31 @@ def descricao(request, espaco_id):
     }
 
     return render(request, 'descricao.html', espacos_a_exibir)
+
+
+# def check(request,id=None):
+#     if request.method == 'POST':
+#         quantidade = request.POST['quantidade']
+#         check_out= Registro.objects.get(id=id)
+#         check_out.participantes_presentes = quantidade
+#         check_out.check_out_horario = datetime.now().strftime('%H:%M:%S')
+#         check_out.save()
+#     conteudo = {"casos": Registro.objects.order_by('check_in_horario').all()}
+#     return render(request, 'check.html',conteudo)
+
+
+def check_in(request,id):
+    checando = get_object_or_404(Registro,pk=id)
+    if checando.check_in == False:
+        checando.check_in = True
+        checando.check_in_horario = datetime.now().strftime('%H:%M:%S')
+    else:
+        checando.check_in =False
+        quantidade = request.POST['quantidade']
+        checando.participantes_presentes = quantidade
+        checando.check_out_horario = datetime.now().strftime('%H:%M:%S')
+    checando.save()
+    return redirect('check')
 
 
 def check(request):

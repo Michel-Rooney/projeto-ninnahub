@@ -1,55 +1,54 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block 'head' %}
   <link rel="stylesheet" href="{% static 'registro/css/check.css' %}"/>
-
-
   <script>
     function Check(x) {
         var checar = new Date();
         console.log(checar.getHours() + ':' + checar.getMinutes());
         document.form.value = checar.getHours();
-
         if(x == "aparecer") {
         document.getElementById("sumir").style.display = "block";
       }
     }
   </script>
 {% endblock %}
-
 {% block 'title' %} Check-in {% endblock %}
-
 {% block 'body' %}
 {% for caso in casos %}
+  {% if caso.participantes_presentes == 0%}
   <main>
-   
     <div class="parte-branca">
-      <p>{{caso}}</p>
-        <a href="#" onclick="Check()">
-            <div class="botao">
-                <p> Check-in </p>
+      <h1>{{caso}}</h1>
+      {%if caso.check_in == False%}
+      <form action="{%url 'check_in' caso.id %}" method="POST" name="form" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Check-in</button>
+          <!-- <a href="#" onclick="Check()">
+              <div class="botao">
+                  <p> Check-in </p>
+              </div>
+              <input type="submit" name = 'checando' value="">
+            </a> -->
+        </form>
+        {%else%}
+            <a href="#" onclick="Check('aparecer')">
+                <div class="botao">
+                    <p> Check-out</p>
+                </div>
+            </a>
+              <form action="{%url 'check_in' caso.id %}" method="POST" name="form" >
+                <label for="quantidade" class="label-texto"> *Quantas pessoas utilizaram o ambiente?</label>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="text" name="quantidade" id="quantidade"/>
+                <input type="submit" value="Enviar" class="botao-form">
+              </form>
             </div>
-            <input type="hidden" value="">
-        </a>
-
-        <a href="#" onclick="Check('aparecer')">
-            <div class="botao">
-                <p> Check-out</p>
-            </div>
-        </a>
-
-      <form action="" name="form" id="sumir">
-        <label for="quantidade" class="label-texto"> *Quantas pessoas utilizaram o ambiente?</label>
-        <input type="text" name="quantidade" id="quantidade"/>
-
-        <input type="submit" value="Enviar" class="botao-form">
-      </form>
-    </div>
- 
-  </main>
+          </main>
+        {%endif%}
+  {%else%}
+  {%endif%}
 {% endfor %}
-  <script>
-
-  </script>
 {% endblock %}
