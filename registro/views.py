@@ -1,10 +1,6 @@
 from datetime import  time,timedelta,datetime 
-<<<<<<< HEAD
 from django.shortcuts import get_object_or_404, redirect, render, HttpResponse
-=======
->>>>>>> 15d5b585fd715701aa08e7c363801b8b405d0b7c
 from .models import Dados, Espacos, Registro
-from django.shortcuts import get_object_or_404, redirect, render, HttpResponse
 import os
 from ninnahub.settings import BASE_DIR
 
