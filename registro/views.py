@@ -68,7 +68,11 @@ def gerenciar_espaco(request):
 def adicionar_espaco(request):
     return render(request, 'espacos/adicionar_espaco.html')
 
-def remover_espaco(request, espaco_id=None):
+def remover_espaco(request):
+    conteudo = {'espacos': Espacos.objects.order_by('nome').all()}
+    return render(request, 'espacos/remover_espaco.html', conteudo)
+
+def remover_espaco_id(request, espaco_id):
     if request.method == 'POST':
         try:
             deletar = request.POST['deletar']
@@ -76,7 +80,7 @@ def remover_espaco(request, espaco_id=None):
             return redirect('/remover_espaco')
         
         if deletar:
-            espaco = Espacos.objects.order_by('nome').get(id=espaco_id)
+            espaco = get_object_or_404(Espacos, pk=espaco_id)
             os.remove(os.path.join(BASE_DIR, espaco.imagem1.path))
             espaco.delete()
             return redirect('/remover_espaco')
@@ -88,5 +92,4 @@ def remover_espaco(request, espaco_id=None):
     }
 
     return render(request, 'espacos/remover_espaco.html', espacos_a_exibir)
-
 

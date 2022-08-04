@@ -22,7 +22,7 @@
             <div class="espacos">
                 <p>{{ espaco.nome }}</p>
                 <img src="{{ espaco.imagem1.url }}" alt="">
-                <form action="{% url 'remover_espaco' espaco.id %}" method="POST">{% csrf_token %}
+                <form action="{% url 'remover_espaco_id' espaco.id %}" method="POST">{% csrf_token %}
                     <input type="checkbox" name="deletar">
                     <input type="submit" value="Deletar">
                 </form>
