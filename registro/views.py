@@ -1,4 +1,4 @@
-from datetime import  time,timedelta,datetime 
+from datetime import  time,timedelta,datetime
 from django.shortcuts import get_object_or_404, redirect, render, HttpResponse
 from .models import Dados, Espacos, Registro
 import os
@@ -93,3 +93,75 @@ def remover_espaco_id(request, espaco_id):
 
     return render(request, 'espacos/remover_espaco.html', espacos_a_exibir)
 
+
+
+
+
+
+
+
+
+
+def editar_espaco(request):
+    espaco = Espacos.objects.all()
+    espacos_a_exibir = {
+        'espacos' : espaco
+    }
+
+    return render(request, 'espacos/editar_espaco.html', espacos_a_exibir)
+
+
+def editar_espaco_id(request, espaco_id):
+    if request.method == 'POST':
+        espaco = Espacos.objects.get(id=espaco_id)
+        
+        nome = request.POST['nome']
+        descricao = request.POST['descricao']
+        imagem1 = request.FILES['imagem1']
+        # imagem2 = request.FILES['imagem2']
+        # imagem3 = request.FILES['imagem3']
+        # imagem4 = request.FILES['imagem4']
+
+        try:
+            os.remove(os.path.join(BASE_DIR, espaco.imagem1.path))
+        except:
+            pass
+
+        espaco.nome = nome
+        espaco.descricao = descricao
+        espaco.imagem1 = imagem1
+        espaco.save()
+
+
+    espaco = get_object_or_404(Espacos, pk=espaco_id)
+
+    espaco_a_exibir = {
+        'espaco' : espaco
+    }
+    return render(request, 'espacos/editar_espaco_id.html', espaco_a_exibir)
+
+
+
+
+
+
+
+
+def adicionar_espaco(request):
+    if request.method == 'POST':
+
+        nome = request.POST['nome']
+        descricao = request.POST['descricao']
+        imagem1 = request.FILES['imagem1']
+        # imagem2 = request.FILES['imagem2']
+        # imagem3 = request.FILES['imagem3']
+        # imagem4 = request.FILES['imagem4']
+
+        try:
+            os.remove(os.path.join(BASE_DIR, espaco.imagem1.path))
+        except:
+            pass
+        
+        espaco = Espacos.objects.create(nome=nome, descricao=descricao, imagem1=imagem1)
+    
+    return render(request, 'espacos/adicionar_espaco.html')

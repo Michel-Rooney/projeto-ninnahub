@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+  <link rel="stylesheet" href="{% static 'registro/css/home.css' %}" />
+{% endblock %}
+
+{% block 'title' %} EDITAR ESPACO {% endblock %}
+
+
+{% block 'body' %}
+  <header>
+    <img src="{% static 'registro/img/NINNA CINZA.png' %}" alt="" />
+    <h1>Gestão de Espaço NINNA HUB</h1>
+  </header>
+  <main>
+    <div class="div-branca">
+      <h4>Editar Espaço</h4>
+      <div class="mae-espacos">
+        {% if espacos %}
+        {% for espaco in espacos %}
+            <div class="espacos">
+                <a href="{% url 'editar_espaco_id' espaco.id %}">
+                  <p>{{ espaco.nome }}</p>
+                  <img src="{{ espaco.imagem1.url }}" alt="">
+                </a>
+            </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+  </div>
+  </main>
+  <footer>
+    <p>&copy; Coryright NINNA HUB 2022</p>
+  </footer>
+
+{% endblock %}
