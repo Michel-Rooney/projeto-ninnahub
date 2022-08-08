@@ -1,3 +1,4 @@
+{%load static%}
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
@@ -14,17 +15,18 @@
         </div>
         <div class="div-form">
                       
-          <form action="login" class="form">
+          <form action="{% url 'login' %}" method="POST" class="form">
+            {% csrf_token %}
             <div class="div-input">
               <label for="email"> Email:</label>
               <input type="email" name="email" id="email"  class="input-padrao"> 
             </div>  
             <div class="div-input">
-              <label for="numero-cpf" class="label-cpf"> CPF:</label>
-              <input type="text" class="input-padrao" pattern="/^([0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}|[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2})$/" name="numero-cpf" id="numero-cpf" required>
+              <label for="">Senha</label>
+               <input type="password" name="senha">
             </div>
             <div class="div-input">
-              <input type="submit" name="login" placeholder="login" value="Login" id="buton">
+              <button type="submit" id="buton">Login</button>
             </div>
         </div>
   </div>

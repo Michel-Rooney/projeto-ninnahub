@@ -1,3 +1,6 @@
+from .models import NivelUsuario
+from django.contrib.auth.models import User
+from django.contrib import auth
 from datetime import  time,timedelta,datetime
 from django.shortcuts import get_object_or_404, redirect, render, HttpResponse
 from .models import Dados, Espacos, Registro
@@ -22,18 +25,6 @@ def descricao(request, espaco_id):
 
     return render(request, 'descricao.html', espacos_a_exibir)
 
-
-# def check(request,id=None):
-#     if request.method == 'POST':
-#         quantidade = request.POST['quantidade']
-#         check_out= Registro.objects.get(id=id)
-#         check_out.participantes_presentes = quantidade
-#         check_out.check_out_horario = datetime.now().strftime('%H:%M:%S')
-#         check_out.save()
-#     conteudo = {"casos": Registro.objects.order_by('check_in_horario').all()}
-#     return render(request, 'check.html',conteudo)
-
-
 def check_in(request,id):
     checando = get_object_or_404(Registro,pk=id)
     if checando.check_in == False:
@@ -57,9 +48,6 @@ def abertura_chamado(request):
 
 def registro(request):
     return render(request, 'registro.html')
-
-
-
 
 
 def gerenciar_espaco(request):
@@ -92,15 +80,6 @@ def remover_espaco_id(request, espaco_id):
     }
 
     return render(request, 'espacos/remover_espaco.html', espacos_a_exibir)
-
-
-
-
-
-
-
-
-
 
 def editar_espaco(request):
     espaco = Espacos.objects.all()
@@ -165,3 +144,39 @@ def adicionar_espaco(request):
         espaco = Espacos.objects.create(nome=nome, descricao=descricao, imagem1=imagem1)
     
     return render(request, 'espacos/adicionar_espaco.html')
+
+
+
+
+#login adm
+
+def login(request):
+    if request.method ==  'POST':
+        email = request.POST['email']
+        senha = request.POST['senha']
+        if User.objects.filter(email = email).exists():
+            nome = User.objects.filter(email = email).values_list('username',flat=True).get()
+            user = auth.authenticate(request, username = nome, password = senha)
+            if user is not None:
+                auth.login(request, user)
+                return redirect('check')
+    return render(request,'login.html')
+
+def registro_adm(request):
+    if request.method == 'POST':
+        nome = request.POST['nome_usuario']
+        email = request.POST['email']
+        senha = request.POST['senha']
+        tipo = request.POST['nivel']
+        user =User.objects.create_user(username = nome, email = email,  password = senha)
+        user.save()
+        user_id = User.objects.get(email = email)
+        user_n = get_object_or_404(User, pk= user_id.id)
+        nivel = NivelUsuario.objects.create(usuario = user_n, status= tipo)
+        nivel.save()
+        return redirect('login')
+    return render(request, 'registro_adm.html')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('index')

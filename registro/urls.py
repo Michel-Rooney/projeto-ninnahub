@@ -13,6 +13,10 @@ urlpatterns = [
     path('registro/', views.registro, name='registro'),
     path('<int:espaco_id>', views.descricao, name='descricao'),
 
+    path('registro_adm/', views.registro_adm, name = 'registro_adm'),
+    path('login/', views.login, name='login'),
+    path('logout.[/', views.logout, name = 'logout'),
+
     # path('gerenciar/', views.gerenciar, name='gerenciar'),
     # path('gerenciar/<int:espaco_id>', views.deletar, name='deletar'),
 

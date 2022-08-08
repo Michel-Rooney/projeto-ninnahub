@@ -1,5 +1,6 @@
 from email.policy import default
 from django.db import models
+from django.contrib.auth.models import User
 
 class Dados(models.Model):
     nome = models.CharField(max_length=255)
@@ -53,3 +54,10 @@ class Espacos(models.Model):
 
     def __str__(self):
         return self.nome
+
+
+class NivelUsuario(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    status = models.CharField(
+        max_length=3
+    )

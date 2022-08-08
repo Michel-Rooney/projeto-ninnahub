@@ -15,6 +15,21 @@
 {% endblock %}
 {% block 'title' %} Check-in {% endblock %}
 {% block 'body' %}
+{% if user.is_authenticated %}
+<h1>Você é um adm</h1>
+        {% for niv in nivel %}
+            {% if niv.status == 'TOP' %}
+                <h1>Time Operacional</h1>
+                <a href="{% url 'logout' %}">Deslogar</a>
+            {% elif niv.status == 'RCP' %}
+                <h1>Recepção</h1>
+                <a href="{% url 'logout' %}">Deslogar</a>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'cadastro' %}">Cadastro</a>
+    {% endif %}
 {% for caso in casos %}
   {% if caso.participantes_presentes == 0%}
   <main>
@@ -25,12 +40,6 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Check-in</button>
-          <!-- <a href="#" onclick="Check()">
-              <div class="botao">
-                  <p> Check-in </p>
-              </div>
-              <input type="submit" name = 'checando' value="">
-            </a> -->
         </form>
         {%else%}
             <a href="#" onclick="Check('aparecer')">
