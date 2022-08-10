@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404, redirect, render, HttpResponse
 from .models import Dados, Espacos, Registro
 import os
 from ninnahub.settings import BASE_DIR
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     espaco = Espacos.objects.order_by('nome').all()
@@ -50,11 +51,11 @@ def registro(request):
     return render(request, 'registro.html')
 
 
+# Gerenciamento de espaços
+
 def gerenciar_espaco(request):
     return render(request, 'espacos/gerenciar_espaco.html')
 
-def adicionar_espaco(request):
-    return render(request, 'espacos/adicionar_espaco.html')
 
 def remover_espaco(request):
     conteudo = {'espacos': Espacos.objects.order_by('nome').all()}
@@ -81,6 +82,7 @@ def remover_espaco_id(request, espaco_id):
 
     return render(request, 'espacos/remover_espaco.html', espacos_a_exibir)
 
+
 def editar_espaco(request):
     espaco = Espacos.objects.all()
     espacos_a_exibir = {
@@ -88,7 +90,6 @@ def editar_espaco(request):
     }
 
     return render(request, 'espacos/editar_espaco.html', espacos_a_exibir)
-
 
 def editar_espaco_id(request, espaco_id):
     if request.method == 'POST':
@@ -120,12 +121,6 @@ def editar_espaco_id(request, espaco_id):
     return render(request, 'espacos/editar_espaco_id.html', espaco_a_exibir)
 
 
-
-
-
-
-
-
 def adicionar_espaco(request):
     if request.method == 'POST':
 
@@ -148,6 +143,7 @@ def adicionar_espaco(request):
 
 
 
+
 #login adm
 
 def login(request):
@@ -162,6 +158,7 @@ def login(request):
                 return redirect('check')
     return render(request,'login.html')
 
+@login_required(login_url='/login')
 def registro_adm(request):
     if request.method == 'POST':
         nome = request.POST['nome_usuario']
@@ -179,4 +176,4 @@ def registro_adm(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect('index')
+    return redirect('/login')
