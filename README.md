@@ -55,7 +55,7 @@ Ex: http://127.0.0.1:8000/ ------------> home
     git config --global user.email "seu email"
 
 # Pegar alterações (lembre-se de fazer isso antes mesmo de mexer no projeto, ou mandar suas alterações)
-    git pull origin master
+    git pull origin main
 
 # Mandar alterações
     # Adicionar alterações feitas
@@ -65,6 +65,6 @@ Ex: http://127.0.0.1:8000/ ------------> home
         git commit -m "de forma resumida o que você fez"
 
     # Mandar alterações
-        git push origin master
+        git push origin main
 
 ```
