@@ -8,6 +8,7 @@ import os
 from ninnahub.settings import BASE_DIR
 from django.contrib.auth.decorators import login_required
 
+
 def home(request):
     espaco = Espacos.objects.order_by('nome').all()
 
