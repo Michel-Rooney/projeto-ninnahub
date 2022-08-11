@@ -19,7 +19,7 @@ python -m venv venv
 .\venv\Scripts\activate
 
 # Com a venv ativada
-pip install -m requirements.txt
+pip install -r requirements.txt
 ```
 
 4- Usando o django
