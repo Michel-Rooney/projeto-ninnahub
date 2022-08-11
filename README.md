@@ -15,6 +15,11 @@ python -m venv venv
 
 3- Ativar a venv e baixar o requirements.txt
 ```
+# Dá permisão de iniciar a venv
+# No powershell admin digitar
+    Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+    e digitar A para aceitar todos
+    
 # Ativar a venv
 .\venv\Scripts\activate
 
