@@ -54,6 +54,9 @@ Ex: http://127.0.0.1:8000/ ------------> home
 
 5- Mandar/Pegar alterações do projeto
 ```
+# Curso completo de git
+https://www.youtube.com/watch?v=OuOb1_qADBQ
+
 # Configurar o usuario git
     # Só precisa fazer uma unica fez
     git config --global user.name "seu nome"
