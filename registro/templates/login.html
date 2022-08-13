@@ -1,36 +1,40 @@
+{% extends 'base.html' %}
 {%load static%}
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../tentativa de layout/layout-principal/css.css">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+{% block 'head' %}
+  <link rel="stylesheet" href="{% static 'registro/css/login.css' %}" />
+  <header>
+    <img src="{% static 'registro/img/NINNA CINZA.png' %}" alt="" />
+    <h1>LOGIN ADM - NINNA HUB</h1>
+  </header>
+{% endblock %}
+
+{% block 'title' %} Login {% endblock %}
+
+{% block 'body' %}
   <div class="pai">
-        <img src="../algumas imagens do projeto/NINNA AZUL (1).png" alt="" class="logo">
-        <div>
-          <h1>Login</h1>
-        </div>
-        <div class="div-form">
-                      
+      <div>
+        <h1>Login</h1>
+      </div>
+        <div class="div-form">            
           <form action="{% url 'login' %}" method="POST" class="form">
-            {% csrf_token %}
-            <div class="div-input">
-              <label for="email"> Email:</label>
-              <input type="email" name="email" id="email"  class="input-padrao"> 
-            </div>  
-            <div class="div-input">
-              <label for="">Senha</label>
-               <input type="password" name="senha">
-            </div>
-            <div class="div-input">
-              <button type="submit" id="buton">Login</button>
-            </div>
+              {% csrf_token %}
+              <div class="div-input">
+                <label for="email"> Email:</label>
+                <input type="email" name="email" id="email"  class="input-padrao"> 
+              </div>  
+              <div class="div-input">
+                <label for="">Senha:</label>
+                <input type="password" name="senha">
+              </div>
+              <div class="div-input">
+                <button type="submit" id="buton">Login</button>
+              </div>
+          </form>
         </div>
   </div>
-        </form>
+<footer>
+  <p>&copy; Coryright NINNA HUB 2022</p>
+</footer>
 
-        </body>
-        </html>
+{% endblock %}

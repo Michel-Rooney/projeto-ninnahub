@@ -2,9 +2,29 @@
     margin: 0;
     padding: 0;
 }
-body {
+body{
     background: url(../img/background.png) center center / cover;
-}
+    text-align: center;
+  }
+  header {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+    border-bottom: 5px solid #57B952;
+  }
+  
+  header img {
+    width: 15%;
+    padding-top: 10px;
+  }
+  
+  header h1 {
+    padding-top: 70px;
+    padding-right: 300px;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+  }
 
 #sumir {
     display: none;
@@ -15,7 +35,7 @@ body {
     background: #edecee;
     align-items: center;
     margin: 0 auto;
-    margin-top: 250px;
+    margin-top: 30px;
     border-radius: 20px;
     padding: 30px;
     display: flex;
@@ -42,7 +62,13 @@ a {
     color: white;
     cursor: pointer;
 }
-
+button {
+    width: 70px;
+    height: 25px;
+    border-radius: 10px;
+    background: #57B952;
+    margin-left: 5px;
+}
 .botao-form {
     width: 70px;
     height: 25px;

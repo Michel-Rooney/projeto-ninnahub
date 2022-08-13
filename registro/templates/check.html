@@ -2,6 +2,13 @@
 {% load static %}
 {% block 'head' %}
   <link rel="stylesheet" href="{% static 'registro/css/check.css' %}"/>
+  <header>
+    <img src="{% static 'registro/img/NINNA CINZA.png' %}" alt="" />
+    <p>OPTION</p>
+    <p>OPTION</p>
+    <p>OPTION</p>
+    <p>OPTION</p>
+  </header>
   <script>
     function Check(x) {
         var checar = new Date();
@@ -30,34 +37,35 @@
         <a href="{% url 'login' %}">Login</a>
         <a href="{% url 'cadastro' %}">Cadastro</a>
     {% endif %}
-{% for caso in casos %}
-  {% if caso.participantes_presentes == 0%}
-  <main>
-    <div class="parte-branca">
-      <h1>{{caso}}</h1>
-      {%if caso.check_in == False%}
-      <form action="{%url 'check_in' caso.id %}" method="POST" name="form" >
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Check-in</button>
-        </form>
+<main>
+    {% for caso in casos %}
+    
+    {% if caso.participantes_presentes == 0%}
+      <div class="parte-branca">
+        <h1>{{caso}}</h1>
+        {% if caso.check_in == False%}
+          <form action="{%url 'check_in' caso.id %}" method="POST" name="form" >
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Check-in</button>
+          </form>
         {%else%}
-            <a href="#" onclick="Check('aparecer')">
-                <div class="botao">
-                    <p> Check-out</p>
-                </div>
-            </a>
-              <form action="{%url 'check_in' caso.id %}" method="POST" name="form" >
-                <label for="quantidade" class="label-texto"> *Quantas pessoas utilizaram o ambiente?</label>
+          <a href="#" onclick="Check('aparecer')">
+              <div class="botao">
+                  <p> Check-out</p>
+              </div>
+          </a>
+            <form action="{%url 'check_in' caso.id %}" method="POST" name="form" >
+              <label for="quantidade" class="label-texto"> *Quantas pessoas utilizaram o ambiente?</label>
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input type="text" name="quantidade" id="quantidade"/>
-                <input type="submit" value="Enviar" class="botao-form">
-              </form>
-            </div>
-          </main>
+              <input type="text" name="quantidade" id="quantidade"/>
+              <input type="submit" value="Enviar" class="botao-form">
+            </form>
         {%endif%}
-  {%else%}
-  {%endif%}
-{% endfor %}
+    {%else%}
+      </div>    
+    {%endif%}
+    {% endfor %}
+</main>
 {% endblock %}
