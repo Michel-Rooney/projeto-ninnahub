@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from datetime import  time,timedelta,datetime
 from django.shortcuts import get_object_or_404, redirect, render, HttpResponse
-from .models import Dados, Espacos, Registro
+from .models import Espacos, Registro
 import os
 from ninnahub.settings import BASE_DIR
 from django.contrib.auth.decorators import login_required
@@ -145,12 +145,14 @@ def adicionar_espaco(request):
 
 
 
-#login adm
+#LOGIN ADM
 
 def login(request):
+    #PEGANDO DADOS DO FORMULARIO DE LOGIN
     if request.method ==  'POST':
         email = request.POST['email']
         senha = request.POST['senha']
+        #SE O EMAIL FOR VALIDO E CONSTAR NO BANCO
         if User.objects.filter(email = email).exists():
             nome = User.objects.filter(email = email).values_list('username',flat=True).get()
             user = auth.authenticate(request, username = nome, password = senha)
