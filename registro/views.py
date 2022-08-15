@@ -10,14 +10,23 @@ from django.contrib.auth.decorators import login_required
 
 
 def home(request):
+    """PAGINA INICIAL"""
     espaco = Espacos.objects.order_by('nome').all()
     return render(request, 'home.html', {'espacos' : espaco})
 
 def descricao(request, espaco_id):
+    """PAGINA DE DESCRIÇÂO DOS ESPAÇO"""
     espaco = get_object_or_404(Espacos, pk=espaco_id)
     return render(request, 'descricao.html', {'espaco' : espaco})
 
+
+def check(request):
+    """PAGINA DE ADMINISTRADOR"""
+    conteudo = {"casos": Registro.objects.order_by('check_in_horario').all()}
+    return render(request, 'check.html',conteudo)
+
 def check_in(request,id):
+    """REALIZAR CHECK IN/OUT DAS RESERVAS"""
     checando = get_object_or_404(Registro,pk=id)
     if checando.check_in == False:
         checando.check_in = True
@@ -30,15 +39,12 @@ def check_in(request,id):
     checando.save()
     return redirect('check')
 
-
-def check(request):
-    conteudo = {"casos": Registro.objects.order_by('check_in_horario').all()}
-    return render(request, 'check.html',conteudo)
-
 def abertura_chamado(request):
+    """PAGINA DE ABERTURA DE CHAMADO"""
     return render(request, 'abertura_chamado.html')
 
 def registro(request):
+    """PAGINA DE RESERVA DE ESPAÇO"""
     return render(request, 'registro.html')
 
 
@@ -47,15 +53,18 @@ def registro(request):
 
 @login_required(login_url='/login')
 def gerenciar_espaco(request):
+    """PAGINA DE GERENCIAMENTO DE ESPAÇOS"""
     return render(request, 'espacos/gerenciar_espaco.html')
 
 @login_required(login_url='/login')
 def remover_espaco(request):
+    """PAGINA DE REMOÇÂO DE ESPAÇO"""
     conteudo = {'espacos': Espacos.objects.order_by('nome').all()}
     return render(request, 'espacos/remover_espaco.html', conteudo)
 
 @login_required(login_url='/login')
 def remover_espaco_id(request, espaco_id):
+    """REMOVER ESPAÇO ESPECIFICO"""
     if request.method == 'POST':
         try:
             deletar = request.POST['deletar']
@@ -75,11 +84,13 @@ def remover_espaco_id(request, espaco_id):
 
 @login_required(login_url='/login')
 def editar_espaco(request):
+    """PAGINA DE EDIÇÂO DOS ESPAÇOS"""
     espaco = Espacos.objects.all()
     return render(request, 'espacos/editar_espaco.html', {'espacos' : espaco})
 
 @login_required(login_url='/login')
 def editar_espaco_id(request, espaco_id):
+    """EDITAR ESPAÇO ESPECIFICO"""
     if request.method == 'POST':
         espaco = Espacos.objects.get(id=espaco_id)
         
@@ -107,6 +118,7 @@ def editar_espaco_id(request, espaco_id):
 
 @login_required(login_url='/login')
 def adicionar_espaco(request):
+    """ADCICIONAR ESPAÇO ESPECIFICO"""
     if request.method == 'POST':
 
         nome = request.POST['nome']
@@ -132,7 +144,7 @@ def adicionar_espaco(request):
 #LOGIN ADM
 
 def login(request):
-    #PEGANDO DADOS DO FORMULARIO DE LOGIN
+    """PAGINA DE LOGIN DO ADMINISTRADOR"""
     if request.method ==  'POST':
         email = request.POST['email']
         senha = request.POST['senha']
@@ -147,6 +159,7 @@ def login(request):
 
 @login_required(login_url='/login')
 def registro_adm(request):
+    """PAGINA DE REGISTRO DE NOVO ADMINISTRADOR"""
     if request.method == 'POST':
         nome = request.POST['nome_usuario']
         email = request.POST['email']
@@ -162,5 +175,6 @@ def registro_adm(request):
     return render(request, 'registro_adm.html')
 
 def logout(request):
+    """REALIZAÇÂO DE LOGOUT DO USUARIO"""
     auth.logout(request)
     return redirect('/login')
