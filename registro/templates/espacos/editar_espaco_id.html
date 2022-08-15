@@ -17,7 +17,7 @@
     <div class="div-branca">
       <h4>Editar Espaço</h4>
       <div class="mae-espacos">
-        <form action="{% url 'editar_espaco_id' espaco.id %}" method="POST" enctype="multipart/form-data" accept="image/*">{% csrf_token %} 
+        <form action="{% url 'editar_espaco_id' espaco.id %}" method="POST" enctype="multipart/form-data">{% csrf_token %} 
             <input type="text" name="nome" value="{{espaco.nome }}"><br><br>
             <textarea type="text" name="descricao">
                 {{espaco.descricao }}
