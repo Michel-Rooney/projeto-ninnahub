@@ -1,0 +1,79 @@
+body{
+  background: url(../img/background.png) center center / cover;
+  text-align: center;
+}
+header {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 20px;
+  border-bottom: 5px solid #57B952;
+}
+
+header img {
+  width: 15%;
+  padding-top: 10px;
+}
+
+header h1 {
+  padding-top: 70px;
+  padding-right: 300px;
+  color: white;
+  font-family: 'Oswald', sans-serif;
+  font-weight: bold;
+}
+#buton{
+  width: 30%;
+  border-radius: 20px;
+  background: #57b952;
+  font-weight: bold;
+}
+
+#buton:hover {
+  color: white;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.logo {
+  width: 40%;
+  border-bottom: 2px #57b952 solid;
+  padding-bottom: 10px;
+}
+
+.div-input {
+  padding: 5px;
+  padding-bottom: 5px;
+}
+
+.label-cpf {
+  margin-right: 17px;
+  padding-top: 15px;
+}
+
+.div-input input {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 3px;
+}
+
+.div-form{
+  padding: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+
+.pai{
+  background-color: white;
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 55px;
+  padding: 30px;
+  border-radius: 35px;
+}
+  

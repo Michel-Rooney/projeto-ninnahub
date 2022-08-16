@@ -22,10 +22,11 @@
             <div class="espacos">
                 <p>{{ espaco.nome }}</p>
                 <img src="{{ espaco.imagem1.url }}" alt="">
-                <form action="{% url 'remover_espaco_id' espaco.id %}" method="POST">{% csrf_token %}
+                <a href="{% url 'remover_espaco_id' espaco.id %}" class="delete-btn">DESPACHAR</a>
+                <!-- <form action="{% url 'remover_espaco_id' espaco.id %}" method="POST">{% csrf_token %}
                     <input type="checkbox" name="deletar">
-                    <input type="submit" value="Deletar">
-                </form>
+                    <input type="submit" class="delete-btn" value="Deletar"> -->
+                <!-- </form> -->
             </div>
         {% endfor %}
         {% endif %}
@@ -35,5 +36,6 @@
   <footer>
     <p>&copy; Coryright NINNA HUB 2022</p>
   </footer>
-
+  <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="{% static 'js/alert.js' %}"></script>
 {% endblock %}

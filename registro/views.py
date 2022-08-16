@@ -29,7 +29,6 @@ def descricao(request, espaco_id):
 
     return render(request, 'descricao.html', espacos_a_exibir)
 
-
 def check(request):
     """PAGINA DE ADMINISTRADOR"""
     conteudo = {"casos": Registro.objects.order_by('check_in_horario').all()}
@@ -71,26 +70,10 @@ def remover_espaco(request):
 
 def remover_espaco_id(request, espaco_id):
     """REMOVER ESPAÇO ESPECIFICO"""
-    if request.method == 'POST':
-        try:
-            deletar = request.POST['deletar']
-        except:
-            return redirect('/remover_espaco')
-        
-        if deletar:
-            espaco = get_object_or_404(Espacos, pk=espaco_id)
-            os.remove(os.path.join(BASE_DIR, espaco.imagem1.path))
-            espaco.delete()
-            return redirect('/remover_espaco')
-
-
-    espaco = Espacos.objects.all()
-    espacos_a_exibir = {
-        'espacos' : espaco
-    }
-
-    return render(request, 'espacos/remover_espaco.html', espacos_a_exibir)
-
+    espaco = get_object_or_404(Espacos, pk=espaco_id)
+    os.remove(os.path.join(BASE_DIR, espaco.imagem1.path))
+    espaco.delete()
+    return redirect('/remover_espaco')
 
 def editar_espaco(request):
     """PAGINA DE EDIÇÂO DOS ESPAÇOS"""
@@ -131,7 +114,6 @@ def editar_espaco_id(request, espaco_id):
     }
     return render(request, 'espacos/editar_espaco_id.html', espaco_a_exibir)
 
-
 def adicionar_espaco(request):
     """ADCICIONAR ESPAÇO ESPECIFICO"""
     if request.method == 'POST':
@@ -151,9 +133,6 @@ def adicionar_espaco(request):
         espaco = Espacos.objects.create(nome=nome, descricao=descricao, imagem1=imagem1)
     
     return render(request, 'espacos/adicionar_espaco.html')
-
-
-
 
 
 #LOGIN ADM

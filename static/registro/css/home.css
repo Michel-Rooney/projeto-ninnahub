@@ -1,0 +1,111 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url(../img/background.png) center center / cover;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+    border-bottom: 5px solid #57B952;
+}
+
+header img {
+    width: 15%;
+    padding-top: 10px;
+}
+
+header h1 {
+    padding-top: 70px;
+    padding-right: 300px;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+}
+
+.div-branca {
+    background: #ECEDEE;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    padding-bottom: 10px;
+}
+
+.mae-espacos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-right: 5px;
+}
+
+.mae-espacos a {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    font-family: 'Kanit', sans-serif;
+}
+
+.espacos {
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+    justify-content: center;
+    margin: 10px;
+    margin-bottom: 30px;
+}
+
+.espacos p {
+    font-size: 25px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+}
+
+main h4 {
+    text-align: center;
+    font-size: 25px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    text-transform: uppercase;
+    font-family: 'Cormorant SC', serif;
+    color: black ;
+    font-weight: bold;
+}
+
+.espacos img {
+    width: 100%;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.img-isolada {
+    height: 215px;
+}
+
+.espacos:hover {
+    transform: scale(1.1);
+    transition: calc(1s);
+}
+
+footer {
+    background: #00257A;
+    border-top: 5px solid #57B952;
+    color: white;
+    padding: 40px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
