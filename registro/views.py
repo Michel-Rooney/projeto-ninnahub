@@ -1,7 +1,7 @@
 from .models import NivelUsuario
 from django.contrib.auth.models import User
 from django.contrib import auth
-from datetime import  time,timedelta,datetime
+from datetime import  time, timedelta, datetime
 from django.shortcuts import get_object_or_404, redirect, render, HttpResponse
 from .models import Espacos, Registro
 import os
@@ -12,22 +12,12 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     """PAGINA INICIAL"""
     espaco = Espacos.objects.order_by('nome').all()
-
-    espacos_a_exibir = {
-        'espacos' : espaco
-    }
-
-    return render(request, 'home.html', espacos_a_exibir)
+    return render(request, 'home.html', {'espacos' : espaco})
 
 def descricao(request, espaco_id):
     """PAGINA DE DESCRIÇÂO DOS ESPAÇO"""
     espaco = get_object_or_404(Espacos, pk=espaco_id)
-
-    espacos_a_exibir = {
-        'espaco' : espaco
-    }
-
-    return render(request, 'descricao.html', espacos_a_exibir)
+    return render(request, 'descricao.html', {'espaco' : espaco})
 
 def check(request):
     """PAGINA DE ADMINISTRADOR"""
@@ -57,17 +47,21 @@ def registro(request):
     return render(request, 'registro.html')
 
 
+
 # Gerenciamento de espaços
 
+@login_required(login_url='/login')
 def gerenciar_espaco(request):
     """PAGINA DE GERENCIAMENTO DE ESPAÇOS"""
     return render(request, 'espacos/gerenciar_espaco.html')
 
+@login_required(login_url='/login')
 def remover_espaco(request):
     """PAGINA DE REMOÇÂO DE ESPAÇO"""
     conteudo = {'espacos': Espacos.objects.order_by('nome').all()}
     return render(request, 'espacos/remover_espaco.html', conteudo)
 
+@login_required(login_url='/login')
 def remover_espaco_id(request, espaco_id):
     """REMOVER ESPAÇO ESPECIFICO"""
     espaco = get_object_or_404(Espacos, pk=espaco_id)
@@ -75,15 +69,13 @@ def remover_espaco_id(request, espaco_id):
     espaco.delete()
     return redirect('/remover_espaco')
 
+@login_required(login_url='/login')
 def editar_espaco(request):
     """PAGINA DE EDIÇÂO DOS ESPAÇOS"""
     espaco = Espacos.objects.all()
-    espacos_a_exibir = {
-        'espacos' : espaco
-    }
+    return render(request, 'espacos/editar_espaco.html', {'espacos' : espaco})
 
-    return render(request, 'espacos/editar_espaco.html', espacos_a_exibir)
-
+@login_required(login_url='/login')
 def editar_espaco_id(request, espaco_id):
     """EDITAR ESPAÇO ESPECIFICO"""
     if request.method == 'POST':
@@ -105,15 +97,12 @@ def editar_espaco_id(request, espaco_id):
         espaco.descricao = descricao
         espaco.imagem1 = imagem1
         espaco.save()
-
+        return redirect('/editar_espaco')
 
     espaco = get_object_or_404(Espacos, pk=espaco_id)
+    return render(request, 'espacos/editar_espaco_id.html', {'espaco' : espaco})
 
-    espaco_a_exibir = {
-        'espaco' : espaco
-    }
-    return render(request, 'espacos/editar_espaco_id.html', espaco_a_exibir)
-
+@login_required(login_url='/login')
 def adicionar_espaco(request):
     """ADCICIONAR ESPAÇO ESPECIFICO"""
     if request.method == 'POST':
