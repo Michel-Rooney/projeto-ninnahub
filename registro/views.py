@@ -21,7 +21,10 @@ def descricao(request, espaco_id):
 
 def check(request):
     """PAGINA DE ADMINISTRADOR"""
-    conteudo = {"casos": Registro.objects.order_by('check_in_horario').all()}
+    usuario = request.user.id
+    conteudo = {"casos": Registro.objects.order_by('check_in_horario').all(),
+    'nivel': get_object_or_404(NivelUsuario, usuario=usuario)
+    }
     return render(request, 'check.html',conteudo)
 
 def check_in(request,id):

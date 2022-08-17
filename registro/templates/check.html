@@ -23,16 +23,13 @@
 {% block 'title' %} Check-in {% endblock %}
 {% block 'body' %}
 {% if user.is_authenticated %}
-<h1>Você é um adm</h1>
-        {% for niv in nivel %}
-            {% if niv.status == 'TOP' %}
-                <h1>Time Operacional</h1>
+            {% if nivel.status == 'TOP' %}
+                <h1>Seja Bem Vindo, {{nivel.usuario.username}}</h1>
                 <a href="{% url 'logout' %}">Deslogar</a>
-            {% elif niv.status == 'RCP' %}
+            {% elif nivel.status == 'RCP' %}
                 <h1>Recepção</h1>
                 <a href="{% url 'logout' %}">Deslogar</a>
             {% endif %}
-        {% endfor %}
     {% else %}
         <a href="{% url 'login' %}">Login</a>
         <a href="{% url 'cadastro' %}">Cadastro</a>
