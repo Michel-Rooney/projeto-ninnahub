@@ -20,11 +20,33 @@ body{
   
   header h1 {
     padding-top: 70px;
-    padding-right: 300px;
+    padding-right: 20px;
     color: white;
     font-family: 'Oswald', sans-serif;
     font-weight: bold;
   }
+
+.user{
+    padding-top: 70px;
+    color: #edecee;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+}
+
+.option a{
+    color: #edecee;
+    font-size: 15px;
+    padding-top: 80px;
+    padding-right: 10px;
+    color: #edecee;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+}
+.option a:hover{
+    cursor: pointer;
+    color:#57B952;
+    text-decoration: underline;
+}
 
 #sumir {
     display: none;

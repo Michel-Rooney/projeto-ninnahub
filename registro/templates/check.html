@@ -4,12 +4,25 @@
   <link rel="stylesheet" href="{% static 'registro/css/check.css' %}"/>
   <header>
     <img src="{% static 'registro/img/NINNA CINZA.png' %}" alt="" />
-    <p>OPTION</p>
-    <p>OPTION</p>
-    <p>OPTION</p>
-    <p>OPTION</p>
+{% if user.is_authenticated %}
+        {% if nivel.status == 'TOP' %}
+            <h1 class="user"><u>Seja Bem Vindo, {{nivel.usuario.username}}</u></h1>
+            <h1 class="option"><a href="{% url 'gerenciar_espaco' %}">Gerenciar Espaços</a></h1>
+            <h1 class="option"><a href="{% url 'check' %}">Check-In/Out</a></h1>
+            <h1 class="option"><a href="#">Relatórios</a></h1>
+            <h1 class="option"><a href="{% url 'registro_adm' %}"> Novo Usuario</a></h1>
+            <h1 class="option"><a href="{% url 'logout' %}">Deslogar</a></h1>
+        {% elif nivel.status == 'RCP' %}
+            <h1>Recepção</h1>
+            <h1 class="option"><a href="{% url 'check' %}">Check-In/Out</a></h1>
+            <a href="{% url 'logout' %}">Deslogar</a>
+        {% endif %}
+{% else %}
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'cadastro' %}">Cadastro</a>
+{% endif %}
   </header>
-  <script>
+  <!-- <script>
     function Check(x) {
         var checar = new Date();
         console.log(checar.getHours() + ':' + checar.getMinutes());
@@ -18,22 +31,11 @@
         document.getElementById("sumir").style.display = "block";
       }
     }
-  </script>
+  </script> -->
 {% endblock %}
-{% block 'title' %} Check-in {% endblock %}
+{% block 'title' %} Espaço do Administrador {% endblock %}
 {% block 'body' %}
-{% if user.is_authenticated %}
-            {% if nivel.status == 'TOP' %}
-                <h1>Seja Bem Vindo, {{nivel.usuario.username}}</h1>
-                <a href="{% url 'logout' %}">Deslogar</a>
-            {% elif nivel.status == 'RCP' %}
-                <h1>Recepção</h1>
-                <a href="{% url 'logout' %}">Deslogar</a>
-            {% endif %}
-    {% else %}
-        <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'cadastro' %}">Cadastro</a>
-    {% endif %}
+
 <main>
     {% for caso in casos %}
     
