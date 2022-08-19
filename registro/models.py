@@ -72,3 +72,36 @@ class NivelUsuario(models.Model):
     status = models.CharField(
         max_length=3
     )
+
+
+class DiasDisponiveis(models.Model):
+    DIAS_CHOICES = (
+        ('Dom', 'Domingo'),
+        ('Seg', 'Segunda'),
+        ('Ter', 'Terça'),
+        ('Qua', 'Quarta'),
+        ('Qui', 'Quinta'),
+        ('Sex', 'Sexta'),
+        ('Sab', 'Sábado'),
+    )
+    dia = models.CharField(max_length=3, choices=DIAS_CHOICES)
+
+    def __str__(self):
+        return self.dia
+
+class HorariosDisponiveis(models.Model):
+    HORARIOS_CHOICES = (
+        ('09', '09:00'),
+        ('10', '10:00'),
+        ('11', '11:00'),
+        ('12', '12:00'),
+        ('13', '13:00'),
+        ('14', '14:00'),
+        ('15', '15:00'),
+        ('16', '16:00'),
+    )
+    horarios = models.CharField(max_length=2, choices=HORARIOS_CHOICES)
+
+    def __str__(self):
+        return self.horarios
+
