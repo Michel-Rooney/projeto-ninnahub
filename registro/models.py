@@ -74,20 +74,18 @@ class NivelUsuario(models.Model):
     )
 
 
-class DiasDisponiveis(models.Model):
-    DIAS_CHOICES = (
-        ('Dom', 'Domingo'),
+class DiasSemanaisDisponiveis(models.Model):
+    DIAS_SEMANAIS_CHOICES = (
         ('Seg', 'Segunda'),
         ('Ter', 'Terça'),
         ('Qua', 'Quarta'),
         ('Qui', 'Quinta'),
         ('Sex', 'Sexta'),
-        ('Sab', 'Sábado'),
     )
-    dia = models.CharField(max_length=3, choices=DIAS_CHOICES)
+    dia_semanal = models.CharField(max_length=3, choices=DIAS_SEMANAIS_CHOICES)
 
     def __str__(self):
-        return self.dia
+        return self.dia_semanal
 
 class HorariosDisponiveis(models.Model):
     HORARIOS_CHOICES = (
@@ -105,3 +103,42 @@ class HorariosDisponiveis(models.Model):
     def __str__(self):
         return self.horarios
 
+
+class DiasDisponiveis(models.Model):
+    DIAS_CHOICES = (
+        ('01', '01'),
+        ('02', '02'),
+        ('03', '03'),
+        ('04', '04'),
+        ('05', '05'),
+        ('06', '06'),
+        ('07', '07'),
+        ('08', '08'),
+        ('09', '09'),
+        ('10', '10'),
+        ('11', '11'),
+        ('12', '12'),
+        ('13', '13'),
+        ('14', '14'),
+        ('15', '15'),
+        ('16', '16'),
+        ('17', '17'),
+        ('18', '18'),
+        ('19', '19'),
+        ('20', '20'),
+        ('21', '21'),
+        ('22', '22'),
+        ('23', '23'),
+        ('24', '24'),
+        ('25', '25'),
+        ('26', '26'),
+        ('27', '27'),
+        ('28', '18'),
+        ('29', '29'),
+        ('30', '30'),
+        ('31', '31'),
+    )
+    dia = models.CharField(max_length=2, choices=DIAS_CHOICES)
+
+    def __str__(self):
+        return self.dia
