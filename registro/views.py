@@ -19,6 +19,7 @@ def descricao(request, espaco_id):
     espaco = get_object_or_404(Espacos, pk=espaco_id)
     return render(request, 'descricao.html', {'espaco' : espaco})
 
+@login_required(login_url='/login')
 def check(request):
     """PAGINA DE ADMINISTRADOR"""
     usuario = request.user.id
