@@ -14,7 +14,7 @@ body{
   }
   
   header img {
-    width: 15%;
+    width: 100%;
     padding-top: 10px;
   }
   
@@ -25,6 +25,10 @@ body{
     font-family: 'Oswald', sans-serif;
     font-weight: bold;
   }
+
+.link-logo {
+    width: 15%;
+}
 
 .user{
     padding-top: 70px;
@@ -41,11 +45,11 @@ body{
     color: #edecee;
     font-family: 'Oswald', sans-serif;
     font-weight: bold;
+    text-decoration: none;
 }
 .option a:hover{
     cursor: pointer;
     color:#57B952;
-    text-decoration: underline;
 }
 
 #sumir {

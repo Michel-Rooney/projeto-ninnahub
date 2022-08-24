@@ -3,7 +3,9 @@
 {% block 'head' %}
   <link rel="stylesheet" href="{% static 'registro/css/check.css' %}"/>
   <header>
-    <img src="{% static 'registro/img/NINNA CINZA.png' %}" alt="" />
+    <a class="link-logo">
+      <img src="{% static 'registro/img/NINNA CINZA.png' %}" alt="" />
+    </a>
 {% if user.is_authenticated %}
         {% if nivel.status == 'TOP' %}
             <h1 class="user"><u>Seja Bem Vindo, {{nivel.usuario.username}}</u></h1>
