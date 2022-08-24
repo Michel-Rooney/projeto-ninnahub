@@ -14,7 +14,7 @@
 {% block 'body' %}
   <div class="pai">
       <div>
-        <h1>Login</h1>
+        <h1 class="h1-login">Login</h1>
       </div>
         <div class="div-form">            
           <form action="{% url 'login' %}" method="POST" class="form">
@@ -34,7 +34,10 @@
         </div>
   </div>
 <footer>
-  <p>&copy; Coryright NINNA HUB 2022</p>
+    
+  <div>
+    <p>&copy; Coryright NINNA HUB 2022</p>
+  </div>
 </footer>
 
 {% endblock %}

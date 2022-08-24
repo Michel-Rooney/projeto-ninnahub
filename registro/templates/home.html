@@ -10,9 +10,11 @@
 
 {% block 'body' %}
   <header>
-    <img src="{% static 'registro/img/NINNA CINZA.png' %}" alt="" />
+    <a class="link-logo">
+      <img src="{% static 'registro/img/NINNA CINZA.png' %}" alt=""/>
+    </a>
     <h1>Gestão de Espaço NINNA HUB</h1>
-    <a href="{% url 'login' %}"><h4>Admin Console</h4></a>
+    <a href="{% url 'login' %}"><p>Time Operacional</p></a>
   </header>
   <main>
     <div class="div-branca">
@@ -30,7 +32,16 @@
   </div>
   </main>
   <footer>
-    <p>&copy; Coryright NINNA HUB 2022</p>
+    <div class="mae-rodape">
+        <div>
+            <p>Telefone:</p>
+            <p>Email para contato: contato@ninnahub.com.br </p>
+            <p>Estamos localizados na Av. Dom Manuel, 1020 - Centro, Fortaleza - CE, 60060-090</p>
+        </div>
+        <div class="copy">
+          <p>&copy; Coryright NINNA HUB 2022</p>
+        </div>
+    </div>
   </footer>
 
 {% endblock %}

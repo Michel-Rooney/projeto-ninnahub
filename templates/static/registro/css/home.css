@@ -20,17 +20,40 @@ header {
 }
 
 header img {
-    width: 15%;
+    width: 100%;
     padding-top: 10px;
 }
 
 header h1 {
     padding-top: 70px;
-    padding-right: 300px;
     color: white;
-    font-family: 'Oswald', sans-serif;
     font-weight: bold;
 }
+
+header p {
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 20px;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #57B952;
+    margin-top: 70px;
+}
+
+header p:hover {
+    transition: 1.01s;
+    color: white;
+}
+
+header a {
+    text-decoration: none;
+}
+
+.link-logo{
+    width: 15%;
+}
+
 .opcoes{
     margin-top: 10px;
 }
@@ -106,16 +129,20 @@ main h4 {
 }
 
 .espacos:hover {
-    transform: scale(1.1);
+    transform: scale(1.04);
     transition: calc(1s);
 }
 
-footer {
-    background: #00257A;
-    border-top: 5px solid #57B952;
+.mae-rodape{
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
     color: white;
-    padding: 40px;
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
+    font-size: 20px;
+    background-color: #00257A;
+    border-top: 2px solid #57B952;
+}
+
+.copy {
+    margin-top: 25px;
 }
