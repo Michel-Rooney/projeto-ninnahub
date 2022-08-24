@@ -1,6 +1,5 @@
 body{
   background: url(../img/background.png) center center / cover;
-  text-align: center;
 }
 header {
   display: flex;
@@ -15,12 +14,13 @@ header img {
 }
 
 header h1 {
-  padding-top: 70px;
+  padding-top: 50px;
   padding-right: 300px;
   color: white;
   font-family: 'Oswald', sans-serif;
   font-weight: bold;
 }
+
 #buton{
   width: 15%;
   border-radius: 40px;
@@ -82,5 +82,7 @@ header h1 {
   padding: 40px;
   border-radius: 35px;
   box-shadow: 10px 5px 5px #57B952;
+  text-align: center;
+  margin-bottom: 80px;
 }
   
